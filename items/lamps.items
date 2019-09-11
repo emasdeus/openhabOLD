@@ -1,0 +1,18 @@
+Dimmer	Llum_Bola_Gran 	    "Llum Bola Gran"    (gLlums, gMenjador)     [ "Lighting" ]      {channel="zwave:device:f6c39405:node6:switch_dimmer"}   
+Dimmer 	Llum_Bola_Petita 	"Llum Bola Petita" 	(gLlums, gMenjador)     [ "Lighting" ]      {channel="zwave:device:f6c39405:node5:switch_dimmer"}
+Dimmer 	Llum_Passadis 	    "Llum Passadis" 	(gLlums, gPassadis)     [ "Lighting" ]      {channel="zwave:device:f6c39405:node12:switch_dimmer"}
+Switch 	Llum_WC		        "Llum WC" 		   	(gLlums, gWC)           [ "Lighting" ]      {channel="zwave:device:f6c39405:node10:switch_binary1"}
+Switch 	Llum_Balco  	    "Llum Balco" 	   	(gLlums, gBalco)        [ "Lighting" ]      {channel="zwave:device:f6c39405:node3:switch_binary"}
+Switch 	Llum_Menjador       "Llum Menjador"    	(gLlums, gMenjador)     [ "Lighting" ]      {channel="zwave:device:f6c39405:node17:switch_binary1"}
+
+//Switch 	Llum_determinar     "Llum determinar"  	{channel="zwave:device:f6c39405:node17:switch_binary2"}
+
+
+//Falten per configurar:
+// Llums de bou cuina
+// Llum Cuina
+// Leds barra
+// Habitació Gran
+// Habitació Roc
+// Leds Passadís
+// Posar leds darrera del sofà

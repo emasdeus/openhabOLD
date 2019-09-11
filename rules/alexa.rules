@@ -1,0 +1,48 @@
+//var Timer stopAlarmTimer = null
+rule "Alexa Alarm"
+when
+    Item Virtual_Alexa changed to ON
+then
+	Alexa_Volume.sendCommand('50')
+    Alexa_Speak.sendCommand("Noemi!")
+    Alexa_Alarm.sendCommand('ECHO:system_alerts_repetitive01')
+    //Alexa_Alarm.sendCommand('ECHO:system_alerts_repetitive01')
+    
+	//sendCommand("ZWaveNode19_SmokeAlarm", "ON")
+	//Alexa_Remind.sendCommand('Hola Mundo')
+	//Alexa_AlarmSound.sendCommand('')
+	//Alexa_AlarmSound.sendCommand('ECHO:system_alerts_repetitive01')
+    	//if (stopAlarmTimer === null)
+    	//{
+        //	stopAlarmTimer = createTimer(now.plusSeconds(15)) [|
+        //   	stopAlarmTimer.cancel()
+        //    	stopAlarmTimer = null
+        //    	Alexa_AlarmSound.sendCommand('')
+        //]
+    //}
+
+	//Alexa_Speak.sendCommand('Alarma parada')
+end
+
+rule "Alexa AlarmOFF"
+when
+    Item Virtual_Alexa changed to OFF
+then
+        Alexa_Volume.sendCommand('50')
+        Alexa_Speak.sendCommand("Noemí!")
+        Alexa_Alarm.sendCommand('')
+        
+	    //sendCommand("ZWaveNode19_SmokeAlarm","OFF")
+        //Alexa_AlarmSound.sendCommand('ECHO:system_alerts_repetitive01')
+        //if (stopAlarmTimer === null)
+        //{
+        //      stopAlarmTimer = createTimer(now.plusSeconds(15)) [|
+        //      stopAlarmTimer.cancel()
+        //      stopAlarmTimer = null
+        //      Alexa_AlarmSound.sendCommand('')
+        //]
+    //}
+
+        //Alexa_Speak.sendCommand('Alarma parada')
+end
+

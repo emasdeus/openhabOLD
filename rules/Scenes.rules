@@ -1,0 +1,101 @@
+rule "SOFA"
+when
+    Item Virtual_Scene_Sofa  received update ON
+then
+	/////////////////// ITEMS ON ///////////////////////////
+	logInfo("Scene", "Scene Sofa Activated")
+	//llum menjador
+        //sendCommand(Llum_Menjador,ON)
+	
+	/////////////////// LLUMS OFF ///////////////////////////
+
+        //llum WC
+        sendCommand(Llum_WC, OFF)
+        //llum Passadís
+        sendCommand(Llum_Passadis,OFF)
+        //llum bola petita
+        sendCommand(Llum_Bola_Petita,OFF)
+        //llum bola gran
+        sendCommand(Llum_Bola_Gran,OFF)
+        //llum balcó
+        sendCommand(Llum_Balco,OFF)
+        //llum Menjador
+        sendCommand(Llum_Menjador,ON)
+	
+	/////////////////// OTHER SCENES OFF ///////////////////////////
+
+	//Sala Estar
+	sendCommand(Virtual_Scene_Estar, OFF)
+	sendCommand(Virtual_Scene_Dormir, OFF)
+end
+
+rule "SALAESTAR"
+when
+    Item Virtual_Scene_Estar  received update ON
+then
+        /////////////////// ITEMS ON ///////////////////////////
+
+        //llum bola petita
+        sendCommand(Llum_Bola_Petita,ON)
+        //llum bola gran
+        sendCommand(Llum_Bola_Gran,ON)
+
+        /////////////////// LLUMS OFF ///////////////////////////
+
+        //llum menjador
+        sendCommand(Llum_Menjador,OFF)
+	//llum WC
+        sendCommand(Llum_WC, OFF)
+        //llum Passadís
+        sendCommand(Llum_Passadis,OFF)
+        //llum balcó
+        sendCommand(Llum_Balco,OFF)
+        //llum bola petita
+        sendCommand(Llum_Bola_Petita,OFF)
+        //llum bola gran
+        sendCommand(Llum_Bola_Gran,OFF)
+	/////////////////// OTHER SCENES OFF ///////////////////////////
+
+        //Sofa
+        sendCommand(Virtual_Scene_Sofa, OFF)
+	sendCommand(Virtual_Scene_Dormir, OFF)
+end
+
+rule "DORMIR"
+when
+    Item Virtual_Scene_Dormir received update ON
+then
+        
+	/////////////////// LLUMS OFF ///////////////////////////
+
+        //llum menjador
+        sendCommand(Llum_Menjador,OFF)
+	//llum WC
+        sendCommand(Llum_WC, OFF)
+        //llum Passadís
+        sendCommand(Llum_Passadis,OFF)
+        //llum balcó
+        sendCommand(Llum_Balco,OFF)
+        
+        //Persiana Habitació Gran
+	 sendCommand(RFXCOMACT1_Command,OFF)
+        //Persiana Habitació Roc      
+        sendCommand(PersianaHabRoc_Command,OFF)
+	Thread::sleep(26500)
+	sendCommand(RFXCOMACT1_Command,ON)
+	Thread::sleep(2700)
+	sendCommand(RFXCOMACT1_Command,ON)
+
+/////////////////// OTHER SCENES OFF ///////////////////////////
+        //Sofa
+        sendCommand(Virtual_Scene_Sofa, OFF)
+	//Sala Estar
+        sendCommand(Virtual_Scene_Estar, OFF)
+end
+
+rule "Alexa nos vamos"
+when
+    Item Virtual_Scene_AlexaNosVamos received update ON
+then
+        sendCommand(PisONOFF, OFF)
+end

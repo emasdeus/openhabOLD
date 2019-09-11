@@ -1,0 +1,3 @@
+Bridge rfxcom:bridge:usb0 [ serialPort="/dev/rfxtrx0" ] {
+    
+}

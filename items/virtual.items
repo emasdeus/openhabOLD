@@ -1,0 +1,7 @@
+Switch Virtual_Device_Alarm         "Alarm"             <alarm> 
+Switch Virtual_Device_Alarm_Status  "Alarm"             <alarm>
+Switch Virtual_Alexa                "Alexa"             <switch>
+Switch Virtual_Scene_AlexaNosVamos  "Alexa nos vamos"   <switch>    [ "Switchable" ]
+Switch Virtual_Scene_Dormir         "Dormir"            <switch>    [ "Switchable" ]
+Switch Virtual_Scene_Sofa           "Sofa"              <switch>    [ "Switchable" ]
+Switch Virtual_Scene_Estar          "Estar"             <switch>    [ "Switchable" ]

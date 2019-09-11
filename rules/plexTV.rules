@@ -1,0 +1,18 @@
+rule "Lights on when paused or stopped"
+when
+    Item PlexTVStatus changed to Paused or 
+    Item PlexTVStatus changed to Stopped
+then 
+	logInfo("PlexLight", "Play to pause")
+	sendCommand(Llum_Passadis,ON)
+	sendCommand(Llum_Bola_Gran,ON)
+end
+
+rule "Lights dimmed when playing"
+when
+	Item PlexTVStatus changed to Playing  
+then
+	logInfo("PlexLight", "Pause to play")	
+	sendCommand(Llum_Passadis,OFF)
+	sendCommand(Llum_Bola_Gran,OFF)
+end

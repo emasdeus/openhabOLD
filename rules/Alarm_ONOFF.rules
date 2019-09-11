@@ -1,0 +1,33 @@
+rule "Alarm_ON"
+
+when
+	Item Virtual_Device_Alarm changed to ON
+then
+	Alexa_Volume.sendCommand(75)
+    Alexa_Speak.sendCommand("Alarma disparada!")
+    Alexa_Alarm.sendCommand('ECHO:system_alerts_repetitive01')
+	sendPushoverMessage(pushoverBuilder("Alarma disparada!").withEmergencyPriority())
+	val url = "http://admin@192.168.1.138/image.jpg"
+	val outputFile = "/tmp/image.jpg"
+	var cmd = "curl -m 10 -o " + outputFile + " " + url
+	executeCommandLine(cmd)
+	Thread::sleep(3000)
+	sendMail("emasdeus@gmail.com", "Alarma disparada!", "Alarma disparada!", "file:///tmp/image.jpg")
+end
+
+rule "Alarm_OFF"
+
+when
+        Item Virtual_Device_Alarm changed to OFF
+then
+	Alexa_Volume.sendCommand(75)
+    Alexa_Speak.sendCommand("Alarma desactivada!")
+    Alexa_Alarm.sendCommand('')
+	//enviar imagte de la camera per email
+	val url = "http://admin@192.168.1.138/image.jpg"
+        val outputFile = "/tmp/image.jpg"
+        var cmd = "curl -m 10 -o " + outputFile + " " + url
+        executeCommandLine(cmd)
+	sendMail("emasdeus@gmail.com", "Alarma desactivada", "Alarma desactivada", "file:///tmp/image.jpg")
+	Alexa_Volume.sendCommand(4)
+end

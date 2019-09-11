@@ -1,0 +1,15 @@
+rule "DoorSensorON"
+
+when
+        Item ZWaveNode2_MotionSensor changed to ON
+then
+        if(Virtual_Device_Alarm_Status.state == ON)
+	{
+		//Espero 5 segons i si la alarma continua conectada la disparo
+		Thread::sleep(5000)
+		if(Virtual_Device_Alarm_Status.state == ON)
+	        {
+			sendCommand(Virtual_Device_Alarm,ON)
+		}
+	}
+end

@@ -1,0 +1,4 @@
+
+Dimmer	TV_Volume 	    "TV Volume"    (gTV, gMenjador)     {channel="samsungtv:tv:5f930636_3cf8_427b_a6e5_1dabcd6a71be:volume"}
+Switch  TV_Mute         "TV Mute"      (gTV, gMenjador)     {channel="samsungtv:tv:5f930636_3cf8_427b_a6e5_1dabcd6a71be:mute"}
+Switch  TV_Power        "TV Power"     (gTV, gMenjador)     {channel="samsungtv:tv:5f930636_3cf8_427b_a6e5_1dabcd6a71be:power"}

@@ -1,0 +1,6 @@
+
+sitemap default label="Pis Barcelona"
+{
+    	Switch item=WC label="WC"
+	Switch item=SceneSofa label="Scene"
+}

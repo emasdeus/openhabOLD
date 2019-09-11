@@ -1,0 +1,121 @@
+rule "PIS_OFF"
+when
+    Item Virtual_Scene_Pis received update OFF or Item PisONOFF received update OFF
+then
+	//
+        Alexa_Volume.sendCommand(75)
+        Alexa_Speak.sendCommand("Conectando alarma y desactivando piso!")
+        Alexa_Volume.sendCommand(25)
+        //llum WC
+	sendCommand(Llum_WC, OFF)
+	//llum Passad�s
+	sendCommand(Llum_Passadis,OFF)
+	//llum bola petita
+	sendCommand(Llum_Bola_Petita,OFF)
+	//llum bola gran
+	sendCommand(Llum_Bola_Gran,OFF)
+	//llum Balc�
+	sendCommand(Llum_Balco,OFF)
+	//llum balc�
+	sendCommand(Llum_Balco,OFF)
+	//Persiana Habitaci� Gran
+	sendCommand(RFXCOMACT1_Command,OFF)
+	//Persiana Habitaci� Roc      
+        sendCommand(PersianaHabRoc_Command,OFF)
+	//sendCommand(Llum Roc,OFF)
+	//sendCommand(Llum Habitaci� gran,OFF)
+	//sendCommand(llum cuina,OFF)
+	//sendCommand(focus cuina,OFF)
+	//sendCommand(leds cuina,OFF)
+	//sendCommand(tv,OFF)
+	//Conectar c�mera
+	
+	//Espero 10 segons, conecto la alarma i envio email
+	Thread::sleep(10000)
+	sendCommand(Virtual_Device_Alarm_Status,ON)
+	sendMail("emasdeus@gmail.com", "PIS OFF / Alarma conectada", "PIS OFF i Alarma conectada")
+end
+
+rule "PIS_ON"
+when
+    Item Virtual_Scene_Pis received update ON or Item PisONOFF received update ON
+then
+        Alexa_Volume.sendCommand(75)
+        Alexa_Speak.sendCommand("Bienvenido, conectando piso y desconectando alarma")
+        Alexa_Volume.sendCommand(4)
+
+        //desconecto alarma
+        sendCommand(Virtual_Device_Alarm_Status,OFF)
+
+        //si l'alarma s'ha disparat, la apago
+        if(Virtual_Device_Alarm.state == ON)
+        {
+                sendCommand(Virtual_Device_Alarm,OFF)
+        }
+
+        //si el pis està a les fosques, obro el llum del passadís
+        if((ZWaveNode2_SensorLuminance.state)<4)
+        {
+                sendCommand(Llum_Passadis,ON)
+                //sendCommand(WaveNode6FGD211UniversalDimmer500W_Dimmer,ON)
+        }
+	//si el mejador  està a les fosques, obro les boles
+        if((MotionSensorMenjador_SensorLuminance.state) < 20)
+        {
+                //llum bola petita
+        	sendCommand(Llum_Bola_Petita,ON)
+        	//llum bola gran
+        	sendCommand(Llum_Bola_Gran,ON)
+
+        }
+
+	//Persiana Habitació Gran      
+        sendCommand(RFXCOMACT1_Command,ON)
+	//Persiana Habitació Roc      
+        sendCommand(PersianaHabRoc_Command,ON)
+        //espero 5 segons per captar imatge i la envio
+        Thread::sleep(5000)
+        val url = "http://admin@192.168.1.138/image.jpg"
+        val outputFile = "/tmp/image.jpg"
+        var cmd = "curl -m 10 -o " + outputFile + " " + url
+        executeCommandLine(cmd)
+        Thread::sleep(3000)
+        sendMail("emasdeus@gmail.com", "PIS ON / Alarma desconectada", "PIS ON i Alarma desconectada", "file:///tmp/image.jpg")
+end
+
+rule "Hab_ON"
+when
+	Item ONOFFHabGran received update ON
+then
+	//Persiana Habitació Gran
+        logInfo("PISONOFF Rule", "Persiana gran ON")
+	sendCommand(RFXCOMACT1_Command,ON)
+
+end
+
+rule "Hab_OFF"
+when
+        Item ONOFFHabGran received update OFF
+then
+        //Persiana Habitació Gran
+        sendCommand(RFXCOMACT1_Command,OFF)
+
+end
+
+rule "HabRoc_ON"
+when
+        Item ONOFFHabRoc received update ON
+then
+        //Persiana Habitació Roc
+        sendCommand(PersianaHabRoc_Command,ON)
+
+end
+
+rule "HabRoc_OFF"
+when
+        Item ONOFFHabRoc received update OFF
+then
+        //Persiana Habitació Roc
+        sendCommand(PersianaHabRoc_Command,OFF)
+
+end

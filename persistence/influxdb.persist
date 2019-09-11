@@ -1,0 +1,10 @@
+Strategies {
+        everyMinute : "0 * * * * ?"
+        everyHour   : "0 0 * * * ?"
+        everyDay    : "0 0 0 * * ?"
+}
+
+Items {
+        MotionSensorMenjador_SensorTemperature,smoketemperaturemejador,ZWaveNode2_SensorTemperature,AlarmSmokeRoc_TemperatureSensor     : strategy = everyChange, everyHour
+        ZWaveNode2_MotionSensor,ZWaveNode2_SensorLuminance,Thermostat_Temperature,MotionSensorMenjador_SensorLuminance                  : strategy = everyChange
+}

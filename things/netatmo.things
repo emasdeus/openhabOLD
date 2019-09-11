@@ -1,0 +1,4 @@
+Bridge netatmo:netatmoapi:home [ clientId="5b8ba31c49c75f501d8b5f3b", clientSecret="ZxGHF97aaqSrvTJqcKZCipXS8hkbAUyCzq", username = "emasdeus@gmail.com", password = "Belliure999", readStation=false, readHealthyHomeCoach=false, readThermostat=true, readWelcome=false] {
+	Thing NAPlug	thermostat [ id="70:ee:50:1a:62:ec", parentId="04:00:00:1a:6a:4c"]
+	Thing NATherm1  thermostat [ id="04:00:00:1a:6a:4c", parentId="70:ee:50:1a:62:ec" ]
+}

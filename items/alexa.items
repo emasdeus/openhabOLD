@@ -1,0 +1,4 @@
+String	Alexa_Speak     "Alexa Text to Speach" 	{channel="amazonechocontrol:echo:ae4e9430:G2A0U204840602J8:textToSpeech"}
+Dimmer	Alexa_Volume    "Alexa Volume"         	{channel="amazonechocontrol:echo:ae4e9430:G2A0U204840602J8:volume"}
+String	Alexa_Alarm     "Alexa Alarm" 	       	{channel="amazonechocontrol:echo:ae4e9430:G2A0U204840602J8:playAlarmSound"}
+

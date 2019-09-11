@@ -1,0 +1,1 @@
+Number Battery_Level_Smoke_Detector_Menajdor "Bateria Smoke Detector Menjador" 	{channel="zwave:device:f6c39405:node19:battery-level"}
