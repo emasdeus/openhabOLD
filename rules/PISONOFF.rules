@@ -3,9 +3,9 @@ when
     Item Virtual_Scene_Pis received update OFF or Item PisONOFF received update OFF
 then
 	//
-        Alexa_Volume.sendCommand(75)
+        Alexa_Volume.sendCommand(50)
         Alexa_Speak.sendCommand("Conectando alarma y desactivando piso!")
-        Alexa_Volume.sendCommand(25)
+        //Alexa_Volume.sendCommand(25)
         //llum WC
 	sendCommand(Llum_WC, OFF)
 	//llum Passad�s
@@ -22,6 +22,8 @@ then
 	sendCommand(RFXCOMACT1_Command,OFF)
 	//Persiana Habitaci� Roc      
         sendCommand(PersianaHabRoc_Command,OFF)
+        //LLum Menjador
+        sendCommand(Llum_Menjador,OFF)
 	//sendCommand(Llum Roc,OFF)
 	//sendCommand(Llum Habitaci� gran,OFF)
 	//sendCommand(llum cuina,OFF)
@@ -40,9 +42,9 @@ rule "PIS_ON"
 when
     Item Virtual_Scene_Pis received update ON or Item PisONOFF received update ON
 then
-        Alexa_Volume.sendCommand(75)
+        Alexa_Volume.sendCommand(50)
         Alexa_Speak.sendCommand("Bienvenido, conectando piso y desconectando alarma")
-        Alexa_Volume.sendCommand(4)
+        //Alexa_Volume.sendCommand(4)
 
         //desconecto alarma
         sendCommand(Virtual_Device_Alarm_Status,OFF)
@@ -54,7 +56,7 @@ then
         }
 
         //si el pis està a les fosques, obro el llum del passadís
-        if((ZWaveNode2_SensorLuminance.state)<4)
+        if((ZWaveNode2_SensorLuminance.state)<5)
         {
                 sendCommand(Llum_Passadis,ON)
                 //sendCommand(WaveNode6FGD211UniversalDimmer500W_Dimmer,ON)
@@ -66,6 +68,8 @@ then
         	sendCommand(Llum_Bola_Petita,ON)
         	//llum bola gran
         	sendCommand(Llum_Bola_Gran,ON)
+                //llum Menjador
+                sendCommand(Llum_Menjador,ON)
 
         }
 

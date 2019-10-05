@@ -20,7 +20,7 @@ rule "Alarm_OFF"
 when
         Item Virtual_Device_Alarm changed to OFF
 then
-	Alexa_Volume.sendCommand(75)
+	Alexa_Volume.sendCommand(50)
     Alexa_Speak.sendCommand("Alarma desactivada!")
     Alexa_Alarm.sendCommand('')
 	//enviar imagte de la camera per email
@@ -29,5 +29,5 @@ then
         var cmd = "curl -m 10 -o " + outputFile + " " + url
         executeCommandLine(cmd)
 	sendMail("emasdeus@gmail.com", "Alarma desactivada", "Alarma desactivada", "file:///tmp/image.jpg")
-	Alexa_Volume.sendCommand(4)
+	//Alexa_Volume.sendCommand(50)
 end

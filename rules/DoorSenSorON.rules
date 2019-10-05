@@ -5,8 +5,8 @@ when
 then
         if(Virtual_Device_Alarm_Status.state == ON)
 	{
-		//Espero 5 segons i si la alarma continua conectada la disparo
-		Thread::sleep(5000)
+		//Espero 7 segons i si la alarma continua conectada la disparo
+		Thread::sleep(7000)
 		if(Virtual_Device_Alarm_Status.state == ON)
 	        {
 			sendCommand(Virtual_Device_Alarm,ON)

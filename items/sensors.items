@@ -1,1 +1,9 @@
 Number Battery_Level_Smoke_Detector_Menajdor "Bateria Smoke Detector Menjador" 	{channel="zwave:device:f6c39405:node19:battery-level"}
+
+
+// Number Temperature Hall "Temperature Hall [%.1f C]" {channel="zwave:device:f6c39405:node2:sensor_temperature"}
+// Number ms6_ultraviolet "MS6 UV [%.2f]" {channel="zwave:device:16500637f6a:node17:sensor_ultraviolet"}
+// Number ms6_luminance "MS6 Luminance [%.2f]" {channel="zwave:device:16500637f6a:node17:sensor_luminance"}
+// Number ms6_humidity "MS6 Humidity [%f%%]" {channel="zwave:device:16500637f6a:node17:sensor_relhumidity"}
+// Switch ms6_motion "MS6 Motion [%s]" {channel="zwave:device:16500637f6a:node17:alarm_motion"}
+// Number ms6_battery "MS6 Battery [%f%%]" {channel="zwave:device:16500637f6a:node17:battery-level"}

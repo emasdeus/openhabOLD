@@ -1,0 +1,3 @@
+//Bridge zwave:serial_zstick:controller "ZWave Controller" [ port="/dev/zwave0", controller_softreset="false", controller_master="true", heal_enable="true", security_networkkey="C0 F3 DD B8 D8 4D A4 CD 10 9B 72 AC 25 93 2D 5E" ] {
+    //Thing fibaro_fgms001_03_002 motionfl "Motion" (zwave:serial_zstick:controller) @ "Corridor"  [ zwave_nodeid="2"]
+//}
